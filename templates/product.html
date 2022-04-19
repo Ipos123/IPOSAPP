@@ -1,0 +1,72 @@
+{% extends 'base.html' %}
+{% load static %}
+<!DOCTYPE html>
+{% block content %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Title</title>
+
+
+</head>
+<body>
+<div class="container">
+    <div class="shadow-lg p-3 mb-5 bg-body rounded">
+    <div class="card">
+        <div class="card-body">
+    <form class="form-inline" action="{% url 'IposApp:Display' %}" method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        <div class="table-responsive" style="overflow-x:auto;">
+        <table  class="table table-bordered">
+
+
+
+              <a type="button" class="btn btn-outline-primary"  href="{% url 'IposApp:Reg' %}">New</a>
+
+
+
+
+
+
+            <tr>
+
+                <th>Id</th>
+                <th>CustomerName</th>
+                <th>MobileNumber</th>
+                <th>NumberOfPerson</th>
+                <th>SelectedTable</th>
+                <th>TokenTime</th>
+                <th>TokenIn</th>
+                <th>Action</th>
+
+            </tr>
+
+
+        {% for i in result %}
+            <tr>
+                <td>{{i.id}}</td>
+                <td>{{i.CustomerName}}</td>
+                 <td>{{i.MobileNumber}}</td>
+                 <td>{{i.NoOfPerson}}</td>
+                 <td>{{i.SelectTable}}</td>
+                <td>{{i.TokenTime}}</td>
+                <td>{{i.TokenIn}}</td>
+                <td>
+
+
+<a class="btn btn-outline-success" id="update" href="{% url 'IposApp:show' i.id  %}">Update</a>
+
+                </td>
+            </tr>
+        {% endfor %}
+
+</table>
+   </div> </form>
+
+</div></div>
+    </div></div>
+
+</body>
+{% endblock %}
+</html>

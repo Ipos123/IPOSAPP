@@ -1,0 +1,110 @@
+{% extends 'base.html' %}
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script type="text/javascript">
+        window.print();
+        window.onafterprint = window.close;	
+      </script>
+</head>
+{% block content %}
+<body>
+<!-- <div class="container">
+    {% if messages %}
+  {% for message in messages %}
+    <div class="alert alert-dismissible alert-success">
+      <button type="button" class="close" data-dismiss="alert">
+      ×
+      </button>
+      <strong>{{message}}<strong>
+    </div>
+ {% endfor %}
+{% endif %} -->
+
+
+<div class="shadow-lg p-3 mb-5 bg-body rounded">
+    <div class="card" style="height:620px;">
+        <div style="background-color:darkseagreen" class="card-title"><center><strong>Registration</strong></center></div>
+        <div class="card-body">
+<form action="{% url 'IposApp:Reg'  %}" method="POST" enctype="multipart/form-data">
+    {% csrf_token %}
+
+    <table class="table">
+        <tr>
+            <td>
+                <input type="text" required maxlength="50"  name="CustomerName" class="form-control" placeholder="CustomerName">
+            </td>
+</tr>
+          <tr>
+            <td>
+                <input type="text" name="MobileNumber"  id="phone_number"
+           
+           required="required" class="form-control" placeholder="MobileNumber">
+            </td>
+</tr>
+
+           <tr>
+            <td>
+                <input type="text" required minlength="1" maxlength="1000"  name="NoOfPerson" class="form-control" placeholder="NoOfPerson">
+                <input pattern="\d{1,2}/\d{1,2}/\d{4}" type="hidden" name="TokenTime">
+                <input pattern="\d{1,2}/\d{1,2}/\d{4}" type="hidden" name="TokenIn">
+            </td>
+</tr>
+
+             <tr>
+
+            <td>
+              <select  name="SelectTable" id="Location" class="form-control"  required >
+                  <option value="">SelectTable</option>
+                  {% for i in tb %}
+                  <option value="{{i.TableNo}}">{{i.TableNo}}</option>
+
+                  {% endfor %}
+              </select>
+
+            </td>
+</tr>
+
+
+
+
+  <center>
+
+
+       <tr>
+            <td>
+<input class="btn btn-outline-success"  type="submit" value="Register">
+
+
+                </td>
+       </tr>
+      <tr>
+          <td>
+            <a href="{% url 'IposApp:Display' %}"><img style="height:60px;" src="{% static 'images/b.jpg' %}"></a>
+            
+          </td>
+      </tr>
+
+
+
+
+  </center>
+
+
+    </table>
+
+
+</form>
+            </div>
+        </div>
+
+</div></div>
+
+</body>
+
+
+{% endblock %}
+</html>
