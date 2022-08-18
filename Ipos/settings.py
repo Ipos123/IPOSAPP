@@ -76,16 +76,12 @@ WSGI_APPLICATION = 'Ipos.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'sql_server.pyodbc',
+        'ENGINE': 'django.db.backends.sqlite3',
         'NAME': 'SummitIPOSNEW',
-        'HOST': 'SUMMIT-6\SQLEXPRESS',
-        'USER': 'sa',
-        'PASSWORD': '123',
+        'HOST': '',
+        'PASSWORD': '',
         'PORT':'',
-        'OPTIONS': {
-            'driver': 'SQL Server Native Client 10.0',
-        ' dsn': 'IposDB6',
-        }
+        
     }
 }
 
